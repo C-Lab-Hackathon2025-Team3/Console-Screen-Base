@@ -4,6 +4,10 @@
 #ifndef CONOSLE_SCREEN_H
 #define CONSOLE_SCREEN_H
 
+#if defined(DEBUG) || defined(_DEBUG)
+extern char* g_screen_buffer;
+#endif
+
 void init_screen(size_t width, size_t height);
 void push_pixel(char pixel, int x, int y);
 void draw_screen(void);
