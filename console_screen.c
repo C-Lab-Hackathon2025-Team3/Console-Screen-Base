@@ -40,6 +40,17 @@ void draw_screen(void)
 	fputs(g_output_buffer, stdout);
 }
 
+void clear_screen(void)
+{
+	for (size_t i = 0; i < g_height; i++)
+	{
+		for (size_t j = 0; j < g_width; j++)
+		{
+			g_output_buffer[i * g_pitch + j] = ' ';
+		}
+	}
+}
+
 size_t get_screen_width(void)
 {
 	return g_width;
