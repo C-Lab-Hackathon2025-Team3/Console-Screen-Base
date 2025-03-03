@@ -9,7 +9,7 @@ size_t g_width = 0;
 size_t g_height = 0;
 size_t g_pitch = 0;
 
-void InitScreen(size_t width, size_t height)
+void init_screen(size_t width, size_t height)
 {
 	g_width = width;
 	g_height = height;
@@ -27,7 +27,7 @@ void InitScreen(size_t width, size_t height)
 	*(long*)(g_output_buffer + height * g_pitch) = *TERMINATE_STR;
 }
 
-void PushPixel(char pixel, int x, int y)
+void push_pixel(char pixel, int x, int y)
 {
 	if (0 <= x && x < g_width && 0 <= y && y < g_height)
 	{
@@ -35,7 +35,17 @@ void PushPixel(char pixel, int x, int y)
 	}
 }
 
-void DrawScreen(void)
+void draw_screen(void)
 {
 	fputs(g_output_buffer, stdout);
+}
+
+size_t get_screen_width(void)
+{
+	return g_width;
+}
+
+size_t get_screen_height(void)
+{
+	return g_height;
 }
