@@ -16,6 +16,7 @@ void init_screen(size_t width, size_t height)
 	g_pitch = width + 1;
 	g_output_buffer = malloc(g_pitch * height + 4);
 	assert(g_output_buffer != NULL);
+
 	for (size_t i = 0; i < height; i++)
 	{
 		for (size_t j = 0; j < width; j++)
