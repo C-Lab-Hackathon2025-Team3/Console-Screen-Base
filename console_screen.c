@@ -2,7 +2,7 @@
 
 #include <stdlib.h>
 #include <assert.h>
-const long* const TERMINATE_STR = "\033[H";
+const long* const TERMINATE_STR = "\x1B[H";
 
 char* g_output_buffer = NULL;
 size_t g_width = 0;
@@ -25,6 +25,11 @@ void init_screen(size_t width, size_t height)
 		g_output_buffer[i * g_pitch + width] = '\n';
 	}
 	*(long*)(g_output_buffer + height * g_pitch) = *TERMINATE_STR;
+}
+
+void release_screen(void)
+{
+	free(g_output_buffer);
 }
 
 void push_pixel(char pixel, int x, int y)
